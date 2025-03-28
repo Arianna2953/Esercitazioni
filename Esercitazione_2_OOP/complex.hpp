@@ -2,8 +2,8 @@
 template<typename T> requires std::floating_point<T>
 class complex_number
 {// privato
-    I real;
-	I imag;
+    T real;
+	T imag;
 
 public:
 	complex_number()
@@ -13,7 +13,7 @@ public:
 		: real(r), imag(0)
 	{}
 	complex_number(T r, T i)
-        : real(r), real(i)
+        : real(r), imag(i)
     {}
 	T real_part() const{
 		return real;
@@ -30,9 +30,9 @@ public:
 		return *this;
 	}
 	complex_number operator+(const complex_number& other) const {
-        complex_number compl = *this;
-        compl += other;
-        return compl;
+        complex_number comp = *this;
+        comp += other;
+        return comp;
 	}
 	complex_number& operator*=(const complex_number& other) {
 		real = real*other.real-imag*other.imag;
@@ -40,8 +40,7 @@ public:
 		return *this;
 	}
 	complex_number operator*(const complex_number& other) const {
-        compl= complex_number(real*other.real-imag*other.imag, real*other.imag+imag*other.real);
-        return compl;
+        return complex_number(real*other.real-imag*other.imag, real*other.imag+imag*other.real);
 	}	
 	
 	complex_number& operator+=(const T& other) {
@@ -49,9 +48,9 @@ public:
 		return *this;
 	}
 	complex_number operator+(const T& other) const {
-        complex_number compl = *this;
-        compl += other;
-        return compl;
+        complex_number comp = *this;
+        comp += other;
+        return comp;
 	}
 	complex_number& operator*=(const T& other) {
 		real = real*other;
@@ -59,26 +58,25 @@ public:
 		return *this;
 	}
 	complex_number operator*(const T& other) const {
-        compl= complex_number(real*other, imag*other);
-        return compl;
+        return complex_number(real*other, imag*other);
 	}
 };
 template<typename T>
 complex_number<T>
-operator+(const T& other, const complex_number<T>& compl)
+operator+(const T& other, const complex_number<T>& comp)
 {
-    return compl+other;
+    return comp+other;
 }
 template<typename T>
 complex_number<T>
-operator*(const T& other, const complex_number<T>& compl)
+operator*(const T& other, const complex_number<T>& comp)
 {
-    return compl*other;
+    return comp*other;
 }
 template<typename T>
 std::ostream&
 operator<<(std::ostream& os, const complex_number<T>& r) {
-	os << real_part();
+	os << r.real_part();
     if (r.imag_part()>=0)
         os << "+";
     os << r.imag_part() << "i";

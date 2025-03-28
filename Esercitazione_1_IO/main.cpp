@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cmath>
 #include <limits>
 #include <iomanip>
@@ -14,16 +15,14 @@ double map_points(double x){
 	}
 int main()
 {
-    std::string input="data.txt";
-	std::ifstream inputfile(input);
-	if (inputfile.fail())
-	{
+	std::ifstream ifs("data.txt");
+	if (ifs.fail()){
 		std::cerr << "Errore nell'apertura del file" << std::endl;
 		return 1;
 	}
-	std::string output='result.txt';
-	std::ostream outputfile(output);
-	if (!outputfile){
+	std::string output="result.txt";
+	std::ofstream ofs(output);
+	if (!ofs){
 		std::cerr << "Errore nell'apertura del file" << std::endl;
 		return 1;
 	}
@@ -32,15 +31,15 @@ int main()
 	double sum=0.0;
 	double mean=0.0;
 	unsigned int k=1;
-	ofs << "# N Mean" << std:endl;
-	while (inputfile >> valore)
+	ofs << "# N Mean" << std::endl;
+	while (ifs >> point)
 	{
 		sum += map_points(point);
 		mean=sum/k;
-		outputfile << std::scientific << std::scientific(16) << mean << endl;
+		ofs << std::scientific << std::setprecision(16) << mean << std::endl;
 		k++;
 	}
-	inputfile.close();
-	outputfile.close();
+	ifs.close();
+	ofs.close();
 	return 0;	
 }
