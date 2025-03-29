@@ -1,16 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include <cmath>
-#include <limits>
 #include <iomanip>
-#include <numbers>
+#include <string>
+#include <cmath>
 
-double map_points(double x){
+double map_points(double &point){
 		int a=1;
 		int b=5;
 		int c=-1;
 		int d=2;
-		double new_point=c+((d-c)/(b-a))*(x-a); // la formula per la traslazione dei punti di un intervallo [a,b] ad un intervallo [c,d] è x_new=c+((d-c)/(b-a))*(x-a)
+		double new_point=(c + (d - c) * (point - a) / (b - a)); // la formula per la traslazione dei punti di un intervallo [a,b] ad un intervallo [c,d] è x_new=c+((d-c)/(b-a))*(x-a)
 		return new_point;
 	}
 int main()
@@ -26,7 +25,6 @@ int main()
 		std::cerr << "Errore nell'apertura del file" << std::endl;
 		return 1;
 	}
-	return 0;
 	double point; // varibile ausiliaria in cui memorizzo i valori letti dal file
 	double sum=0.0;
 	double mean=0.0;
