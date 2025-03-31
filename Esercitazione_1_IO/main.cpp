@@ -34,7 +34,7 @@ int main()
 	{
 		sum += map_points(point);
 		mean=sum/k;
-		ofs << std::scientific << std::setprecision(16) << mean << std::endl;
+		ofs << k << " " << std::scientific << std::setprecision(16) << mean << std::endl;
 		k++;
 	}
 	ifs.close();

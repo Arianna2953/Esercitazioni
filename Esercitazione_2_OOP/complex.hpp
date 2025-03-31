@@ -7,13 +7,15 @@ class complex_number
 	T imag;
 
 public: 
-	complex_number() // costruttore di default
+	// costruttore di default
+	complex_number() 
 		: real(0), imag(0)
 	{}
 	explicit complex_number(T r)
 		: real(r), imag(0)
 	{}
-	complex_number(T r, T i) // costruttore user-default per inizializzare la parte reale e la parte immaginaria
+	// costruttore user-default per inizializzare la parte reale e la parte immaginaria
+	complex_number(T r, T i) 
         : real(r), imag(i)
     {}
 	T real_part() const{ // restituisce parte reale del numero complesso
@@ -75,8 +77,7 @@ operator*(const T& other, const complex_number<T>& comp)
     return comp*other;
 }
 template<typename T> // overload per stampare un numero complesso
-std::ostream&
-operator<<(std::ostream& os, const complex_number<T>& r) {
+std::ostream& operator<<(std::ostream& os, const complex_number<T>& r) {
 	os << r.real_part();
     if (r.imag_part()>=0)
         os << "+";
