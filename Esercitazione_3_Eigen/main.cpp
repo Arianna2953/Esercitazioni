@@ -34,10 +34,10 @@ int main()
 	}else{
 		cout << "la soluzione della matrice A1 con il sistema QR è:" << scientific << setprecision(15) << solve_QR(A1,b1) << endl;
 		err_QR=err_rel(solve_QR(A1,b1),x_esatta);
-		cout << "l'errore relativo tra la soluzione esatta, e la soluzione ottenuta con il metodo QR per la matrice A1 è:" << scientific << setprecision(15) << err_QR << endl;
+		cout << "l'errore relativo tra la soluzione esatta e la soluzione ottenuta con il metodo QR per la matrice A1 è:" << scientific << setprecision(15) << err_QR << endl;
 		cout << "la soluzione della matrice A1 con il sistema PALU è:" << scientific << setprecision(15) << solve_PALU(A1,b1) << endl;
 		err_PALU=err_rel(solve_PALU(A1,b1),x_esatta);
-		cout << "l'errore relativo tra la soluzione esatta, e la soluzione ottenuta con il metodo PALU per la matrice A1 è:" << scientific << setprecision(15) << err_PALU << endl;
+		cout << "l'errore relativo tra la soluzione esatta e la soluzione ottenuta con il metodo PALU per la matrice A1 è:" << scientific << setprecision(15) << err_PALU << endl;
 	}
 	
 	Matrix2d A2 {
@@ -50,10 +50,10 @@ int main()
 	}else{
 		cout << "la soluzione della matrice A2 con il sistema QR è:" << scientific << setprecision(15) << solve_QR(A2,b2) << endl;
 		err_QR=err_rel(solve_QR(A2,b2),x_esatta);
-		cout << "l'errore relativo tra la soluzione esatta, e la soluzione ottenuta con il metodo QR per la matrice A2 è:" << scientific << setprecision(15) << err_QR << endl;
+		cout << "l'errore relativo tra la soluzione esatta e la soluzione ottenuta con il metodo QR per la matrice A2 è:" << scientific << setprecision(15) << err_QR << endl;
 		cout << "la soluzione della matrice A2 con il sistema PALU è:" << scientific << setprecision(15) << solve_PALU(A2,b2) << endl;
 		err_PALU=err_rel(solve_PALU(A2,b2),x_esatta);
-		cout << "l'errore relativo tra la soluzione esatta, e la soluzione ottenuta con il metodo PALU per la matrice A2 è:" << scientific << setprecision(15) << err_PALU << endl;
+		cout << "l'errore relativo tra la soluzione esatta e la soluzione ottenuta con il metodo PALU per la matrice A2 è:" << scientific << setprecision(15) << err_PALU << endl;
 	}
 		
 	Matrix2d A3 {
@@ -66,10 +66,10 @@ int main()
 	}else{
 		cout << "la soluzione della matrice A3 con il sistema QR è:" << scientific << setprecision(15) << solve_QR(A3,b3) << endl;
 		err_QR=err_rel(solve_QR(A3,b3),x_esatta);
-		cout << "l'errore relativo tra la soluzione esatta, e la soluzione ottenuta con il metodo QR per la matrice A3 è:" << scientific << setprecision(15) << err_QR << endl;
+		cout << "l'errore relativo tra la soluzione esatta e la soluzione ottenuta con il metodo QR per la matrice A3 è:" << scientific << setprecision(15) << err_QR << endl;
 		cout << "la soluzione della matrice A3 con il sistema PALU è:" << scientific << setprecision(15) << solve_PALU(A3,b3) << endl;
 		err_PALU=err_rel(solve_PALU(A3,b3),x_esatta);
-		cout << "l'errore relativo tra la soluzione esatta, e la soluzione ottenuta con il metodo PALU per la matrice A3 è:" << scientific << setprecision(15) << err_PALU << endl;
+		cout << "l'errore relativo tra la soluzione esatta e la soluzione ottenuta con il metodo PALU per la matrice A3 è:" << scientific << setprecision(15) << err_PALU << endl;
 	}
 	
     return 0;
