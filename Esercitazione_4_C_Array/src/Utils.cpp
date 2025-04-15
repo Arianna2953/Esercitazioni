@@ -32,7 +32,7 @@ bool ImportVectors(const string& inputFilePath,
 	// controllo del valore di n
 	if (n==0){
 		cerr << "il valore di n è 0" << endl;
-		return 1;
+		return false;
 	}
 	string tmp; //salto la riga
 	getline(file,tmp); //leggo e non salvo la riga
