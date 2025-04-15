@@ -31,8 +31,8 @@ bool ImportVectors(const string& inputFilePath,
 	string2 >> lettera >> separatore >> n;
 	// controllo del valore di n
 	if (n==0){
-		cout << "il valore di n è 0" << endl;
-		return 1;
+		cerr << "il valore di n è 0" << endl;
+		return false;
 	}
 	string tmp; //salto la riga
 	getline(file,tmp); //leggo e non salvo la riga
