@@ -25,5 +25,4 @@ bool ImportCell1Ds(PolygonalMesh& mesh);
 // mesh: a PolygonalMesh struct
 // return the result of the reading, true if is success, false otherwise
 bool ImportCell2Ds(PolygonalMesh& mesh);
-
 }
