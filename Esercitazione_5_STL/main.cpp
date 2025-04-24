@@ -17,40 +17,46 @@ int main()
         return 1;
     }
 	
-	// verifica che tutti i marker siano ben memorizzati
-	map<unsigned int, list<unsigned int>>&m0Dsmaker=mesh.MarkerCell0Ds;
-	map<unsigned int, list<unsigned int>>&m1Dsmaker=mesh.MarkerCell1Ds;
-	map<unsigned int, list<unsigned int>>&m2Dsmaker=mesh.MarkerCell2Ds;
-	
-	for (auto&[marker,listid]: m0Dsmaker)
-	{
-		cout << "Marker0D: " << marker << "IDs = [";
-		for (auto& id : listid)
-			cout << " " << id;
-		cout << " ]" << endl;
-	}
-	
-	cout << endl;
-	for (auto&[marker,listid]: m1Dsmaker)
-	{
-		cout << "Marker1D: " << marker << "IDs = [";
-		for (auto& id : listid)
-			cout << " " << id;
-		cout << " ]" << endl;
-	}
-	
-	cout << endl;
-	for (auto&[marker,listid]: m2Dsmaker)
-	{
-		cout << "Marker2D: " << marker << "IDs = [";
-		for (auto& id : listid)
-			cout << " " << id;
-		cout << " ]" << endl;
-	}
-	// verifica che la mesh che ho memorizzato sia equivalente a quella di input (così da poter esporatre la maeh memorizzata e usare paraview)
-	Gedim::UCDUtilities utilities;
-	utilities.ExportPoints("./Cell0Ds.inp",mesh.Cell0DsCoordinates);
-	utilities.ExportSegments("./Cell1Ds.inp",mesh.Cell0DsCoordinates,mesh.Cell1DsExtrema);
-	
+    Gedim::UCDUtilities utilities;
+    {
+        vector<Gedim::UCDProperty<double>> cell0Ds_properties(1);
+
+        cell0Ds_properties[0].Label = "Marker";
+        cell0Ds_properties[0].UnitLabel = "-";
+        cell0Ds_properties[0].NumComponents = 1;
+
+        vector<double> cell0Ds_marker(mesh.NumCell0Ds, 0.0);
+        for(const auto &m : mesh.MarkerCell0Ds)
+            for(const unsigned int id: m.second)
+                cell0Ds_marker.at(id) = m.first;
+
+        cell0Ds_properties[0].Data = cell0Ds_marker.data();
+
+        utilities.ExportPoints("./Cell0Ds.inp",
+                               mesh.Cell0DsCoordinates,
+                               cell0Ds_properties);
+    }
+
+    {
+
+        vector<Gedim::UCDProperty<double>> cell1Ds_properties(1);
+
+        cell1Ds_properties[0].Label = "Marker";
+        cell1Ds_properties[0].UnitLabel = "-";
+        cell1Ds_properties[0].NumComponents = 1;
+
+        vector<double> cell1Ds_marker(mesh.NumCell1Ds, 0.0);
+        for(const auto &m : mesh.MarkerCell1Ds)
+            for(const unsigned int id: m.second)
+                cell1Ds_marker.at(id) = m.first;
+
+        cell1Ds_properties[0].Data = cell1Ds_marker.data();
+
+        utilities.ExportSegments("./Cell1Ds.inp",
+                                 mesh.Cell0DsCoordinates,
+                                 mesh.Cell1DsExtrema,
+                                 {},
+                                 cell1Ds_properties);
+    }
     return 0;
 }

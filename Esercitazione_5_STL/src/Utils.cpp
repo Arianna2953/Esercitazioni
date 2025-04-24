@@ -14,17 +14,61 @@ namespace PolygonalLibrary
 bool ImportMesh(PolygonalMesh& mesh)
 {
 
-    if(!ImportCell0Ds(mesh))
+    if(!ImportCell0Ds(mesh)){
         return false;
+	}
+	else{
+		cout << "Cell0D marker:" << endl;
+		if (mesh.MarkerCell0Ds.size()!=0){
+			for(auto it=mesh.MarkerCell0Ds.begin(); it!=mesh.MarkerCell0Ds.end(); it++){
+				cout << "marker id:\t" << it -> first << "\t valori:";
+				for (const unsigned int id: it -> second)
+					cout << "\t" << id;
+				cout << endl;
+			}
+		}
+		else{
+			cout<< "No not-null marker found" << endl;
+		}
+	}
 
-    if(!ImportCell1Ds(mesh))
+    if(!ImportCell1Ds(mesh)){
         return false;
+	}
+	else{
+		cout << "Cell1D marker:" << endl;
+		if (mesh.MarkerCell1Ds.size()!=0){
+			for(auto it=mesh.MarkerCell1Ds.begin(); it!=mesh.MarkerCell1Ds.end(); it++){
+				cout << "marker id:\t" << it -> first << "\t valori:";
+				for (const unsigned int id: it -> second)
+					cout << "\t" << id;
+				cout << endl;
+			}
+		}
+		else{
+			cout<< "No not-null marker found" << endl;
+		}
+	}
 
-    if(!ImportCell2Ds(mesh))
+    if(!ImportCell2Ds(mesh)){
         return false;
+	}
+	else{
+		cout << "Cell2D marker:" << endl;
+		if (mesh.MarkerCell2Ds.size()!=0){
+			for(auto it=mesh.MarkerCell2Ds.begin(); it!=mesh.MarkerCell2Ds.end(); it++){
+				cout << "marker id:\t" << it -> first << "\t valori:";
+				for (const unsigned int id: it -> second)
+					cout << "\t" << id;
+				cout << endl;
+			}
+		}
+		else{
+			cout<< "No not-null marker found" << endl;
+		}
+	}
 
     return true;
-
 }
 
 bool ImportCell0Ds(PolygonalMesh& mesh)
@@ -234,7 +278,7 @@ bool ImportCell2Ds(PolygonalMesh& mesh)
 		vector<unsigned int>& vecvet=mesh.Cell2DsVertices[id];
 		const unsigned int n=vecvet.size();
 		double area=0.0;
-		for(size_t i=0;i<n;i++)
+		for(unsigned int i=0;i<n;i++)
 		{
 			const unsigned int viid=vecvet[i];
 			const unsigned int vjid=vecvet[(i+1)%n]; // serve per chiudere il poligono e connettere primo e ultimo vertice
