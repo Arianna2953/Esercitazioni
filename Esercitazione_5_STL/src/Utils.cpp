@@ -91,7 +91,7 @@ bool ImportCell0Ds(PolygonalMesh& mesh)
 
     mesh.NumCell0Ds = listLines.size();
 
-    if (mesh.NumCell0Ds == 0)
+    if (mesh.NumCell0Ds == 0) //controllo che il file non sia vuoto
     {
         cerr << "There is no cell 0D" << endl;
         return false;
